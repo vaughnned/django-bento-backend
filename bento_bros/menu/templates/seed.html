@@ -42,7 +42,7 @@
           <h3>
             <a
               style="text-decoration: none; color: brown"
-              href="http://127.0.0.1:8000/seeditem/item_id"
+              href="{% url 'appetizer_item' item.id %}"
               >{{ item.name }} {{ item.price }}</a
             >
           </h3>
@@ -54,13 +54,7 @@
 
         {% for item in main_course %}
         <li style="list-style-type: none">
-          <h3>
-            <a
-              style="text-decoration: none; color: brown"
-              href="http://127.0.0.1:8000/seeditem/{{ forloop.counter0 }}"
-              >{{ item.name }} {{ item.price }}</a
-            >
-          </h3>
+          <h3></h3>
         </li>
         {% endfor %}
       </div>
@@ -68,13 +62,7 @@
         <h1>Desserts</h1>
         {% for item in desserts %}
         <li style="list-style-type: none">
-          <h3>
-            <a
-              style="text-decoration: none; color: brown"
-              href="http://127.0.0.1:8000/seeditem/{{ forloop.counter0 }}"
-              >{{ item.name }} {{ item.price }}</a
-            >
-          </h3>
+          <h3></h3>
         </li>
         {% endfor %}
       </div>

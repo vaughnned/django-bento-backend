@@ -124,7 +124,13 @@ def home_page(request):
 
 def item(request, index):
     item = menu[index]
-    return render(request, 'item_description.html', {'item': item})
+    return render(request, 'item_description.html', {'item': item})\
+
+
+
+def appetizer_item(request, seed_item_id):
+    seed_item = get_object_or_404(Appetizer, id=seed_item_id)
+    return render(request, "seed_item.html", {"item": seed_item})
 
 
 # def appetizer(request, appetizer_id):

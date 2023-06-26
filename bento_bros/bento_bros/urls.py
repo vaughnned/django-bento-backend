@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from menu.views import home_page, item, appetizer, seed
+from menu.views import home_page, item, appetizer_item, seed
 
 app_name = "menu"
 
@@ -25,5 +25,7 @@ urlpatterns = [
     path('home/', home_page),
     path('item/<int:index>', item),
     path('seed/', seed),
-    path('seed/<int:appetizer_id>', appetizer)
+    path('seed_item/<int:seed_item_id>',
+         appetizer_item, name="appetizer_item"),
+
 ]
