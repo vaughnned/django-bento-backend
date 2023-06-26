@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from menu.models import Appetizer, MainCourse, Dessert
 
 # Create your views here.
@@ -121,40 +121,50 @@ menu = [
 def home_page(request):
     return render(request, "home_page.html", {'menu': menu})
 
+
 def item(request, index):
     item = menu[index]
     return render(request, 'item_description.html', {'item': item})
 
+
+# def appetizer(request, appetizer_id):
+#     appetizer = get_object_or_404(Appetizer, id=appetizer_id)
+#     return render(request, 'seed_item.html', {'item': appetizer})
+
+
 def seed(request):
-    appetizers = [
-        Appetizer(name="Gyoza", price=6.99),
-        Appetizer(name="Edamame", price=5.99),
-        Appetizer(name="Agedashi Tofu", price=7.99),
-        Appetizer(name="Takoyaki", price=8.99)
-    ]
+    if not Appetizer.objects.exists():
+        appetizers = [
+            Appetizer(name="Gyoza", price=6.99),
+            Appetizer(name="Edamame", price=5.99),
+            Appetizer(name="Agedashi Tofu", price=7.99),
+            Appetizer(name="Takoyaki", price=8.99)
+        ]
+        Appetizer.objects.bulk_create(appetizers)
+    appetizer_list = Appetizer.objects.all()
 
-    Appetizer.objects.bulk_create(appetizers)
+    if not MainCourse.objects.exists():
+        main_course = [
+            MainCourse(name="Teriyaki Chicken", price=12.99),
+            MainCourse(name="Sushi Platter", price=14.99),
+            MainCourse(name="Beef Yankiniku", price=15.99),
+            MainCourse(name="Vegetable Tempura", price=13.99),
+            MainCourse(name="Tonkatsu", price=11.99),
+            MainCourse(name="Unagi Don", price=16.99),
+            MainCourse(name="Ramen", price=18.99),
+            MainCourse(name="Chicken Katsu Curry", price=12.99),
+            MainCourse(name="Sashimi Deluxe", price=17.99),
+        ]
+        MainCourse.objects.bulk_create(main_course)
+    maincourseList = MainCourse.objects.all()
 
-    main_course = [
-        MainCourse(name="Teriyaki Chicken", price=12.99),
-        MainCourse(name="Sushi Platter", price=14.99),
-        MainCourse(name="Beef Yankiniku", price=15.99),
-        MainCourse(name="Vegetable Tempura", price=13.99),
-        MainCourse(name="Tonkatsu", price=11.99),
-        MainCourse(name="Unagi Don", price=16.99),
-        MainCourse(name="Ramen", price=18.99),
-        MainCourse(name="Chicken Katsu Curry", price=12.99),
-        MainCourse(name="Sashimi Deluxe", price=17.99),
-    ]
+    if not Dessert.objects.exists():
+        desserts = [
+            Dessert(name="Matcha Green Tea Ice Cream", price=6.99),
+            Dessert(name="Mochi Ice Cream", price=7.99),
+            Dessert(name="Dorayaki", price=5.99),
+        ]
+        Dessert.objects.bulk_create(desserts)
+    dessertList = Dessert.objects.all()
 
-    MainCourse.objects.bulk_create(main_course)
-
-    desserts = [
-        Dessert(name="Matcha Green Tea Ice Cream", price=6.99),
-        Dessert(name="Mochi Ice Cream", price=7.99),
-        Dessert(name="Dorayaki", price=5.99),
-    ]
-
-    Dessert.objects.bulk_create(desserts)
-
-    return render(request, 'seed.html', {'appetizers': appetizers, 'main_course': main_course, 'desserts': desserts})
+    return render(request, 'seed.html', {'appetizers': appetizer_list, 'main_course': maincourseList, 'desserts': dessertList})
