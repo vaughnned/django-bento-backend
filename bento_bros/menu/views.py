@@ -128,8 +128,8 @@ def item(request, index):
 
 
 
-def appetizer_item(request, seed_item_id):
-    seed_item = get_object_or_404(Appetizer, id=seed_item_id)
+def appetizer_item(request, appetizer_item_id):
+    seed_item = get_object_or_404(Appetizer, id=appetizer_item_id)
     return render(request, "seed_item.html", {"item": seed_item})
 
 

@@ -25,7 +25,7 @@ urlpatterns = [
     path('home/', home_page),
     path('item/<int:index>', item),
     path('seed/', seed),
-    path('seed_item/<int:seed_item_id>',
+    path('seed_item/<int:appetizer_item_id>',
          appetizer_item, name="appetizer_item"),
 
 ]
