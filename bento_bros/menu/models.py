@@ -7,7 +7,7 @@ class Appetizer(models.Model):
     name = models.CharField(max_length=50)
     japanese_name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
-    description = models.TextField(max_length=150)
+    description = models.TextField(max_length=500)
     # id = models.IntegerField(primary_key=True)
 
     def __str__(self):
@@ -18,7 +18,7 @@ class MainCourse(models.Model):
     name = models.CharField(max_length=50)
     japanese_name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
-    description = models.TextField(max_length=150)
+    description = models.TextField(max_length=500)
     # id = models.IntegerField(primary_key=True)
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Dessert(models.Model):
     name = models.CharField(max_length=50)
     japanese_name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
-    description = models.TextField(max_length=150)
+    description = models.TextField(max_length=500)
     # id = models.IntegerField(primary_key=True)
 
     def __str__(self):
