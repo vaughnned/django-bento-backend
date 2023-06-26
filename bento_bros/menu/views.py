@@ -129,13 +129,18 @@ def item(request, index):
 
 
 def appetizer_item(request, appetizer_item_id):
-    seed_item = get_object_or_404(Appetizer, id=appetizer_item_id)
-    return render(request, "seed_item.html", {"item": seed_item})
+    appetizer_item = get_object_or_404(Appetizer, id=appetizer_item_id)
+    return render(request, "seed_item.html", {"item": appetizer_item})
 
 
-# def appetizer(request, appetizer_id):
-#     appetizer = get_object_or_404(Appetizer, id=appetizer_id)
-#     return render(request, 'seed_item.html', {'item': appetizer})
+def main_item(request, main_item_id):
+    main_item = get_object_or_404(MainCourse, id=main_item_id)
+    return render(request, "seed_item.html", {"item": main_item})
+
+
+def dessert_item(request, dessert_item_id):
+    dessert_item = get_object_or_404(Dessert, id=dessert_item_id)
+    return render(request, "seed_item.html", {"item": dessert_item})
 
 
 def seed(request):

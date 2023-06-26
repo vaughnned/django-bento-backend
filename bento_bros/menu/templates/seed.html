@@ -54,7 +54,13 @@
 
         {% for item in main_course %}
         <li style="list-style-type: none">
-          <h3></h3>
+          <h3>
+            <a
+              style="text-decoration: none; color: brown"
+              href="{% url 'main_item' item.id %}"
+              >{{ item.name }} {{ item.price }}</a
+            >
+          </h3>
         </li>
         {% endfor %}
       </div>
@@ -62,7 +68,13 @@
         <h1>Desserts</h1>
         {% for item in desserts %}
         <li style="list-style-type: none">
-          <h3></h3>
+          <h3>
+            <a
+              style="text-decoration: none; color: brown"
+              href="{% url 'dessert_item' item.id %}"
+              >{{ item.name }} {{ item.price }}</a
+            >
+          </h3>
         </li>
         {% endfor %}
       </div>
